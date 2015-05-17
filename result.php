@@ -1,5 +1,6 @@
 <?php
 require './conn.php';
+require './safe.php';
   echo "<br>排名：<hr>";
   $sql="select * from game order by score desc";
   if($res=$conn->query($sql))
@@ -8,7 +9,7 @@ require './conn.php';
     {
       while($row=$res->fetch_assoc())
       {
-        echo $row['name']."\t\t".$row['score']."\t\t".$row['time']."<hr>";
+        echo I($row['name'])."\t\t".I($row['score'])."\t\t".I($row['time'])."<hr>";
       }
     }//echo 'ok';
   }
